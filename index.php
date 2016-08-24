@@ -1,4 +1,5 @@
 <?php
+
     include "generate.php";
     /**
      * Created by PhpStorm.
@@ -11,7 +12,7 @@
 <html>
     <head>
         <title>Quiz</title>
-        <link href = "index.css" type = "text/css" rel = "stylesheet">
+<!--        <link href = "index.css" type = "text/css" rel = "stylesheet">-->
     </head>
     <body>
         <form action = "grade.php" method = "post" id = "quiz">
