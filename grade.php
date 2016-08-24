@@ -12,6 +12,7 @@
     $total_correct = 0;
     foreach ($results as $result) {
         $answer = $_POST['question-' . (++$i) . '-answers'];
+        
         if ($answer == $result["answer"]) {
             $total_correct++;
         }
