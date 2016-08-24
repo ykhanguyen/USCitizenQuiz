@@ -26,12 +26,13 @@
             </div>
 
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                <div id="barr" class="progress-bar progress-bar-striped" role="progressbar"
+                     aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                     <span class="sr-only">40% Complete</span>
                 </div>
             </div>
 
-            <form action = "grade.php" method = "post" id = "quiz">
+            <form name="myForm" action = "grade.php" method = "post" id = "quiz">
                 <?php generate_choices(); ?>
                 <input class="btn btn-danger" type = "submit" value = "Submit Quiz">
             </form>
