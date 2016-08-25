@@ -1,9 +1,32 @@
 h1 {
     text-align: center;
+
+    font-size: 5.4em;
+    font-weight: bold;
 }
+
+body {
+    font-family: "DomaineText",Georgia,serif;
+    color: #3399FF;
+}
+
+#submit_button {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container, label {
+    text-align: center;
+}
+.container {
+    padding-bottom: 20pt;
+}
+
+
 
 label input[type="radio"] ~ i.fa.fa-circle-o{
     color: #c8c8c8;    display: inline;
+
 }
 label input[type="radio"] ~ i.fa.fa-dot-circle-o{
     display: none;
@@ -13,6 +36,7 @@ label input[type="radio"]:checked ~ i.fa.fa-circle-o{
 }
 label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
     color: #7AA3CC;    display: inline;
+
 }
 label:hover input[type="radio"] ~ i.fa {
     color: #7AA3CC;
@@ -43,6 +67,7 @@ div[data-toggle="buttons"] label {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    text-align: center;
 }
 
 div[data-toggle="buttons"] label:hover {

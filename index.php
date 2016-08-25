@@ -32,10 +32,14 @@
                 </div>
             </div>
 
-            <form name="myForm" action = "grade.php" method = "post" id = "quiz">
-                <?php generate_choices(); ?>
-                <input class="btn btn-danger" type = "submit" value = "Submit Quiz">
-            </form>
+            <div class="container">
+                <form name="myForm" action = "" method = "post" id = "quiz">
+                    <?php generate_choices(); ?>
+                    <div id="submit_button">
+                        <input class="btn btn-danger" type = "submit" value = "Try Again!!!">
+                    </div>
+                </form>
+            </div>
         </div>
 
 

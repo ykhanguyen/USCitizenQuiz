@@ -47,16 +47,16 @@
                             <?php
                                 $j = 0;
                                 foreach ($choices as $choice) {
-                                    $q_id = substr($choice["chs"], 0, 1); // get first id
+                                    $q_id = substr($choice["chs"], 0, 1); // this is the answer id
                                     $ch = substr($choice["chs"], 1); // get choice
                                     ?>
 
                                         <label class="btn active"><input type = "radio"
                                                                          name = "question-<?= $i ?>-answers"
-                                                                         value = "<?= $q_id ?>" />
+                                                                         value = "<?= $q_id. "_" . $question["answer"]?>" />
                                             <i class="fa fa-circle-o fa-2x"></i>
                                             <i class="fa fa-dot-circle-o fa-2x"></i>
-                                            <?= $letter[$j++] . ") " . $ch
+                                            <?= $ch
                                             ?>
                                         </label>
 
