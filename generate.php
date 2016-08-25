@@ -41,9 +41,9 @@
                         $choices = $choices->fetchAll(); // object -> array
 
                         shuffle($choices); ?>
-                        <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                        <div class="btn-group btn-group-vertical col-lg-12 col-md-12 col-sm-12 col-xs-12" data-toggle="buttons">
 
-                            <h2 class="question_class"><?= $question["question"] ?></h2>
+                            <h2 class="question_class"><?= $i . ") " . $question["question"] ?></h2>
                             <?php
                                 $j = 0;
                                 foreach ($choices as $choice) {
@@ -56,7 +56,7 @@
                                                                          value = "<?= $q_id. "_" . $question["answer"]?>" />
                                             <i class="fa fa-circle-o fa-2x"></i>
                                             <i class="fa fa-dot-circle-o fa-2x"></i>
-                                            <?= $ch
+                                            <?= $letter[$j++] . ") " . $ch
                                             ?>
                                         </label>
 
