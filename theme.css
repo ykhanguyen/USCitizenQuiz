@@ -1,11 +1,20 @@
-h1 {
+body {
+    font-family: Arial, serif;
+    color: #3399FF;
+}
 
+h1 {
+    font-family: "utm_zebrawoodregular";
     font-size: 5.4em;
     font-weight: bold;
 }
 
+.question_class {
+    font-family: "utm_duepuntozeroregular";
+}
+
 .progress {
-    position:fixed;
+    position: fixed;
     bottom: 0;
     width: 50%;
     text-align: center;
@@ -14,9 +23,22 @@ h1 {
     border: 3px solid;
 }
 
-body {
-    font-family: "DomaineText",Georgia,serif;
-    color: #3399FF;
+@font-face {
+    font-family: 'utm_duepuntozeroregular';
+    src: url('Fonts/utm_duepuntozero-webfont.woff2') format('woff2'),
+    url('Fonts/utm_duepuntozero-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'utm_zebrawoodregular';
+    src: url('Fonts/utm_zebrawood-webfont.woff2') format('woff2'),
+    url('Fonts/utm_zebrawood-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 #submit_button {
@@ -28,27 +50,31 @@ body {
     padding-bottom: 20pt;
 }
 
-
-
-label input[type="radio"] ~ i.fa.fa-circle-o{
-    color: #c8c8c8;    display: inline;
+label input[type="radio"] ~ i.fa.fa-circle-o {
+    color: #c8c8c8;
+    display: inline;
 
 }
-label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+
+label input[type="radio"] ~ i.fa.fa-dot-circle-o {
     display: none;
 }
-label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+
+label input[type="radio"]:checked ~ i.fa.fa-circle-o {
     display: none;
 }
-label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
-    color: #7AA3CC;    display: inline;
+
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o {
+    color: #7AA3CC;
+    display: inline;
 
 }
+
 label:hover input[type="radio"] ~ i.fa {
     color: #7AA3CC;
 }
 
-div[data-toggle="buttons"] label.active{
+div[data-toggle="buttons"] label.active {
     color: #7AA3CC;
 }
 
@@ -64,8 +90,7 @@ div[data-toggle="buttons"] label {
     vertical-align: top;
     cursor: pointer;
     background-color: none;
-    border: 0px solid
-    #c8c8c8;
+    border: 0px solid #c8c8c8;
     border-radius: 3px;
     color: #c8c8c8;
     -webkit-user-select: none;

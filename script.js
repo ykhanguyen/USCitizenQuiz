@@ -7,6 +7,12 @@
         // Select language english or vietnamese
         document.getElementById("select_language").onchange = select_language;
 
+        // click buttion to play audio
+        var play_audio = document.getElementsByClassName("play_audio");
+        for (var i = 0; i < play_audio.length; i++) {
+            play_audio[i].onclick = play_audio_func;
+        }
+
         // find the total number of questions
         var questions = document.getElementsByClassName("question_class");
         num_question = questions.length;
@@ -19,6 +25,32 @@
             labels[i].onclick = update_process;
         }
     };
+
+    // define audio.stop
+    function stop_audio(audio) {
+        audio.pause();
+        audio.currentTime = 0.0;
+    }
+
+    function play_audio_func() {
+        var audio = document.getElementsByClassName("audio");
+        var name = this.name;
+        var split_value = name.split("_");
+        var audio_curr = audio[split_value[1]];
+        for (var i = 0; i < audio.length; i++) {
+            // stop other audio
+            if (i != split_value[1]) {
+                stop_audio(audio[i]);
+            }
+        }
+        // stop curr playing
+        if (audio_curr.duration > 0.0) {
+            stop_audio(audio_curr);
+        }
+        // first time play
+        audio_curr.play();
+
+    }
 
     function update_process() {
         if (this.disabled) {
