@@ -1,3 +1,27 @@
+.hide_words {
+    display: none;
+}
+
+#languages {
+    float:left;
+}
+
+#correct, #incorrect {
+    float:left;
+    border: 2px solid;
+}
+
+#bar_all {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 99;
+    opacity: 0.84;
+}
+
 body {
     font-family: Arial, serif;
     color: #3399FF;
@@ -11,16 +35,14 @@ h1 {
 
 .question_class {
     font-family: "utm_duepuntozeroregular";
+    text-shadow: 1px 1px black;
+    font-size: 25pt;
 }
 
 .progress {
-    position: fixed;
-    bottom: 0;
     width: 50%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     border: 3px solid;
+    z-index: 9999;
 }
 
 @font-face {
@@ -44,6 +66,7 @@ h1 {
 #submit_button {
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .container {

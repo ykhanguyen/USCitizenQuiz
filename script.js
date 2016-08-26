@@ -3,9 +3,21 @@
     var list = [];
     var num_question;
     var correct_num = 0;
+    var incorrect_num = 0;
+    var total = 0; // this is the total question answered
     window.onload = function () {
+        // show the first question
+        // because I use hide all the question at first
+        // so it will show one by one
+        show_question();
+
         // Select language english or vietnamese
-        document.getElementById("select_language").onchange = select_language;
+        // default language is english
+        show_english();
+
+        // in the page will have 2 button, one will be hidden
+        document.getElementById("en").onclick = show_english;
+        document.getElementById("vi").onclick = show_vietnamese;
 
         // click buttion to play audio
         var play_audio = document.getElementsByClassName("play_audio");
@@ -52,62 +64,133 @@
 
     }
 
+    // This function is to give the correct answer after each choice from client
+    // and will show another question (if have any)
+    // and will update the correct number of the questions answered
+    // and will update the progress bar
     function update_process() {
+        // prevent the user to chose the previous (already) answer questions
         if (this.disabled) {
             return;
         }
+
+        // update the total number of the questions that answered
+        total++;
+
         // find the question's name tag
         var input = this.getElementsByTagName("input");
         name = input[0].getAttribute("name");
 
         var value = input[0].getAttribute("value");
 
+        // the question value will have the id_answer and correct answer
+        // of this question
         var split_value = value.split("_");
+
+        // if the user answer correct
         var matched = split_value[0] == split_value[1];
 
-
-        var found = list.indexOf(name);
-
-
-        // if it didn't corrent before and it matched
-        if (found == -1 && matched) {
+        if (matched) {
             correct_num++;
-            list.push(name);
             this.style.color = "blue";
+            this.style.fontSize = "17pt";
+            $('#correct')[0].innerHTML = "Corect: " + correct_num;
+
             this.style.fontWeight = "bold";
-            disable_buttons_all(name);
-        } else if (found >= 0 && !matched) {  // if it was correct but now is wrong
-            correct_num--;
-            list.splice(found, 1);
+
         } else {
-            return;
+            incorrect_num++;
+            this.style.color = "red";
+            $('#incorrect')[0].innerHTML = "Incorect: " + incorrect_num;
         }
 
-        document.getElementById("barr").setAttribute("style", "width: " + (correct_num * 100 / num_question) + "%");
+        disable_buttons_all_and_show_correct_answer(name);
+
+        // update the progress barŒ
+        document.getElementById("barr").setAttribute("style", "width: " + (total * 100 / num_question) + "%");
+        show_question();
+
+        //$("html, body").animate({ scrollTop: $(document).height() }, 1000);
 
     }
 
-    function disable_buttons_all(name) {
+    // this is to show the next hidden question after the user chose one
+    function show_question() {
+        if (document.getElementById(total + 1) == null) {
+            return;
+        }
+        var element = document.getElementById(total +1).className;
+        document.getElementById(total +1).className =
+            document.getElementById(total +1).className.replace("hide_words ", "") ;
+        console.log(document.getElementById(total +1).className);
+    }
+
+    function disable_buttons_all_and_show_correct_answer(name) {
         var labels = document.getElementsByTagName("label");
 
         // set the event handler for each lable (answer)
         for (var i = 0; i < labels.length; i++) {
             //labels[i].onclick = update_process;
             var input = labels[i].getElementsByTagName("input");
+
+            var value = input[0].getAttribute("value");
+
+            var split_value = value.split("_");
+            var matched = split_value[0] == split_value[1];
+
+
             var name_now = input[0].getAttribute("name");
-            console.log(name_now);
             if (name_now == name) {
                 labels[i].className = "btn disabled";
                 labels[i].disabled = true;
                 input[0].disabled = true;
 
-                console.log(input[0]);
+                if (matched) {
+                    labels[i].style.color = "blue";
+                    labels[i].style.fontSize = "17pt";
+                    labels[i].style.fontWeight = "bold";
+                }
             }
         }
     }
 
-    function select_language() {
-        var lanague = this.value;
+    function show_english(event) {
+        var choices = document.getElementsByClassName("show_vi");
+        for(var i = 0; i < choices.length; i++) {
+            if(choices[i].className.indexOf("btn") != -1) {
+                choices[i].className = "btn btn-default btn-lg show_vi hide_words";
+            } else {
+                choices[i].className = "show_vi hide_words";
+            }
 
+        }
+        choices = document.getElementsByClassName("show_en");
+        for(var i = 0; i < choices.length; i++) {
+            if(choices[i].className.indexOf("btn") != -1) {
+                choices[i].className = "btn btn-default btn-lg show_en";
+            } else {
+                choices[i].className = "show_en";
+            }
+        }
+    }
+
+    function show_vietnamese(event) {
+        var choices = document.getElementsByClassName("show_vi");
+        for(var i = 0; i < choices.length; i++) {
+            if(choices[i].className.indexOf("btn") != -1) {
+                choices[i].className = "btn btn-default btn-lg show_vi";
+            } else {
+                choices[i].className = "show_vi";
+            }
+        }
+
+        choices = document.getElementsByClassName("show_en");
+        for(var i = 0; i < choices.length; i++) {
+            if(choices[i].className.indexOf("btn") != -1) {
+                choices[i].className = "btn btn-default btn-lg show_en hide_words";
+            } else {
+                choices[i].className = "show_en hide_words";
+            }
+        }
     }
 })();
