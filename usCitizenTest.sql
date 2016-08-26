@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: vergil.u.washington.edu:22330
--- Generation Time: Aug 24, 2016 at 05:31 PM
+-- Generation Time: Aug 25, 2016 at 08:30 PM
 -- Server version: 5.5.18
 -- PHP Version: 5.6.22
 
@@ -28,56 +28,57 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `choices` (
   `id` int(10) UNSIGNED NOT NULL,
-  `choice` varchar(100) NOT NULL,
+  `choice` tinytext NOT NULL,
   `answer_id` tinyint(1) UNSIGNED NOT NULL,
-  `question_id` tinyint(1) UNSIGNED NOT NULL
+  `question_id` tinyint(1) UNSIGNED NOT NULL,
+  `choice_vi` tinytext CHARACTER SET utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `choices`
 --
 
-INSERT INTO `choices` (`id`, `choice`, `answer_id`, `question_id`) VALUES
-(1, 'Quebec', 1, 1),
-(2, 'Hawaii', 2, 1),
-(3, 'the Louisiana Territory', 3, 1),
-(4, 'Alaska', 4, 1),
-(5, 'civil rights movement', 1, 2),
-(6, 'prohibition', 2, 2),
-(7, 'conservation', 3, 2),
-(8, 'women\'s suffrage', 4, 2),
-(9, 'made the first flag of the United States', 1, 3),
-(10, 'fought for women\'s rights', 2, 3),
-(11, 'the first woman elected to the House of Representatives', 3, 3),
-(12, 'founded the Red Cross', 4, 3),
-(13, 'freedom of religion and freedom to make treaties with other countries', 1, 4),
-(14, 'freedom to petition the government and freedom to disobey traffic laws', 2, 4),
-(15, 'freedom of speech and freedom of religion', 3, 4),
-(16, 'freedom of speech and freedom to run for president', 4, 4),
-(17, 'Maine', 1, 5),
-(18, 'Oregon', 2, 5),
-(19, 'South Dakota', 3, 5),
-(20, 'Rhode Island', 4, 5),
-(21, 'New York Harbor', 1, 6),
-(22, 'Long Island', 2, 6),
-(23, 'San Francisco Bay', 3, 6),
-(24, 'Boston Harbor', 4, 6),
-(25, 'January', 1, 7),
-(26, 'October', 2, 7),
-(27, 'November', 3, 7),
-(28, 'February', 4, 7),
-(29, 'men do not have to register', 1, 8),
-(30, 'at age sixteen (16)', 2, 8),
-(31, 'at any age', 3, 8),
-(32, 'between eighteen (18) and twenty-six (26)', 4, 8),
-(33, 'Virginia, North Carolina, and Florida', 1, 9),
-(34, 'New York, Kentucky, and Georgia', 2, 9),
-(35, 'Washington, Oregon, and California', 3, 9),
-(36, 'Maryland, Virginia, and North Carolina', 4, 9),
-(37, 'coin or print money', 1, 10),
-(38, 'make treaties', 2, 10),
-(39, 'create an army', 3, 10),
-(40, 'provide schooling and education', 4, 10);
+INSERT INTO `choices` (`id`, `choice`, `answer_id`, `question_id`, `choice_vi`) VALUES
+(1, 'Quebec', 1, 1, ''),
+(2, 'Hawaii', 2, 1, ''),
+(3, 'the Louisiana Territory', 3, 1, ''),
+(4, 'Alaska', 4, 1, ''),
+(5, 'civil rights movement', 1, 2, ''),
+(6, 'prohibition', 2, 2, ''),
+(7, 'conservation', 3, 2, ''),
+(8, 'women\'s suffrage', 4, 2, ''),
+(9, 'made the first flag of the United States', 1, 3, ''),
+(10, 'fought for women\'s rights', 2, 3, ''),
+(11, 'the first woman elected to the House of Representatives', 3, 3, ''),
+(12, 'founded the Red Cross', 4, 3, ''),
+(13, 'freedom of religion and freedom to make treaties with other countries', 1, 4, ''),
+(14, 'freedom to petition the government and freedom to disobey traffic laws', 2, 4, ''),
+(15, 'freedom of speech and freedom of religion', 3, 4, ''),
+(16, 'freedom of speech and freedom to run for president', 4, 4, ''),
+(17, 'Maine', 1, 5, ''),
+(18, 'Oregon', 2, 5, ''),
+(19, 'South Dakota', 3, 5, ''),
+(20, 'Rhode Island', 4, 5, ''),
+(21, 'New York Harbor', 1, 6, ''),
+(22, 'Long Island', 2, 6, ''),
+(23, 'San Francisco Bay', 3, 6, ''),
+(24, 'Boston Harbor', 4, 6, ''),
+(25, 'January', 1, 7, ''),
+(26, 'October', 2, 7, ''),
+(27, 'November', 3, 7, ''),
+(28, 'February', 4, 7, ''),
+(29, 'men do not have to register', 1, 8, ''),
+(30, 'at age sixteen (16)', 2, 8, ''),
+(31, 'at any age', 3, 8, ''),
+(32, 'between eighteen (18) and twenty-six (26)', 4, 8, ''),
+(33, 'Virginia, North Carolina, and Florida', 1, 9, ''),
+(34, 'New York, Kentucky, and Georgia', 2, 9, ''),
+(35, 'Washington, Oregon, and California', 3, 9, ''),
+(36, 'Maryland, Virginia, and North Carolina', 4, 9, ''),
+(37, 'coin or print money', 1, 10, ''),
+(38, 'make treaties', 2, 10, ''),
+(39, 'create an army', 3, 10, ''),
+(40, 'provide schooling and education', 4, 10, '');
 
 -- --------------------------------------------------------
 
@@ -87,25 +88,26 @@ INSERT INTO `choices` (`id`, `choice`, `answer_id`, `question_id`) VALUES
 
 CREATE TABLE `questions` (
   `id` int(10) UNSIGNED NOT NULL,
-  `question` varchar(100) NOT NULL,
-  `answer` tinyint(1) UNSIGNED NOT NULL
+  `question` tinytext NOT NULL,
+  `answer` tinyint(1) UNSIGNED NOT NULL,
+  `question_vi` tinytext CHARACTER SET utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `question`, `answer`) VALUES
-(1, 'What territory did the United States buy from France in 1803?', 3),
-(2, 'What movement tried to end racial discrimination?', 1),
-(3, 'What did Susan B. Anthony do?', 2),
-(4, 'What are two rights of everyone living in the United States?', 3),
-(5, 'Name one state that borders Canada.', 1),
-(6, 'Where is the Statue of Liberty?', 1),
-(7, 'In what month do we vote for President?', 3),
-(8, 'When must all men register for the Selective Service?', 4),
-(9, 'There were 13 original states. Name three.', 4),
-(10, 'Under our Constitution, some powers belong to the states. What is one power of the states?', 4);
+INSERT INTO `questions` (`id`, `question`, `answer`, `question_vi`) VALUES
+(1, 'What territory did the United States buy from France in 1803?', 3, 'Hoa Kỳ mua lãnh thổ nào của Pháp vào năm 1803?'),
+(2, 'What movement tried to end racial discrimination?', 1, 'Phong trào nào tìm cách chấm dứt sự phân biệt chủng tộc?'),
+(3, 'What did Susan B. Anthony do?', 2, 'Bà Susan B. Anthony làm gì?'),
+(4, 'What are two rights of everyone living in the United States?', 3, 'Kể ra Hai quyền trong bản Bản Tuyên Ngôn Độc Lập?'),
+(5, 'Name one state that borders Canada.', 1, 'Cho biết một trong những tiểu bang ráp ranh Canada'),
+(6, 'Where is the Statue of Liberty?', 1, 'Tượng Nữ Thần Tự Do ở đâu?'),
+(7, 'In what month do we vote for President?', 3, 'Bầu Tổng Thống vào tháng nào?'),
+(8, 'When must all men register for the Selective Service?', 4, 'Khi nào tất cả nam giới phải ghi tên cho Sở Quân Vụ (Selective Service)?'),
+(9, 'There were 13 original states. Name three.', 4, 'Có 13 tiểu bang nguyên thủy. Cho biết ba tiểu bang.'),
+(10, 'Under our Constitution, some powers belong to the states. What is one power of the states?', 4, 'Theo Hiến Pháp, các tiểu bang có một số quyền. Một trong những quyền này là gì?');
 
 --
 -- Indexes for dumped tables
@@ -123,8 +125,7 @@ ALTER TABLE `choices`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_UNIQUE` (`id`),
-  ADD UNIQUE KEY `question_UNIQUE` (`question`);
+  ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

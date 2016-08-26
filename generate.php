@@ -43,7 +43,10 @@
                         shuffle($choices); ?>
                         <div class="btn-group btn-group-vertical col-lg-12 col-md-12 col-sm-12 col-xs-12" data-toggle="buttons">
 
-                            <h2 class="question_class"><?= $i . ") " . $question["question"] ?></h2>
+                            <h2 id="q_en" class="question_class"><?= $i . ") " .
+                                $question["question_vi"]
+                                ?></h2>
+
                             <?php
                                 $j = 0;
                                 foreach ($choices as $choice) {

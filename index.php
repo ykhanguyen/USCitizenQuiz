@@ -33,6 +33,13 @@
             </div>
 
             <div class="container">
+                <div>
+                    <select id="select_language">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                </div>
+
                 <form name="myForm" action = "" method = "post" id = "quiz">
                     <?php generate_choices(); ?>
                     <div id="submit_button">
@@ -40,6 +47,8 @@
                     </div>
                 </form>
             </div>
+
+
         </div>
 
 
