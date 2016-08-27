@@ -30,11 +30,11 @@
         num_question = questions.length;
 
         // array of all the answers (label tag)
-        var labels = document.getElementsByTagName("label");
+        var inputs = document.getElementsByClassName("radioo");
 
         // set the event handler for each lable (answer)
-        for (var i = 0; i < labels.length; i++) {
-            labels[i].onclick = update_process;
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = update_process;
         }
     };
 
@@ -69,19 +69,15 @@
     // and will update the correct number of the questions answered
     // and will update the progress bar
     function update_process() {
-        // prevent the user to chose the previous (already) answer questions
-        if (this.disabled) {
-            return;
-        }
 
         // update the total number of the questions that answered
         total++;
 
         // find the question's name tag
-        var input = this.getElementsByTagName("input");
-        name = input[0].getAttribute("name");
+        //var input = this.getElementsByTagName("input");
+        name = this.getAttribute("name");
 
-        var value = input[0].getAttribute("value");
+        var value = this.getAttribute("value");
 
         // the question value will have the id_answer and correct answer
         // of this question
@@ -110,7 +106,7 @@
         document.getElementById("barr").setAttribute("style", "width: " + (total * 100 / num_question) + "%");
         show_question();
 
-        //$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 
     }
 
@@ -122,33 +118,30 @@
         var element = document.getElementById(total +1).className;
         document.getElementById(total +1).className =
             document.getElementById(total +1).className.replace("hide_words ", "") ;
-        console.log(document.getElementById(total +1).className);
     }
 
     function disable_buttons_all_and_show_correct_answer(name) {
-        var labels = document.getElementsByTagName("label");
+        var inputs = document.getElementsByClassName("radioo");
 
         // set the event handler for each lable (answer)
-        for (var i = 0; i < labels.length; i++) {
+        for (var i = 0; i < inputs.length; i++) {
             //labels[i].onclick = update_process;
-            var input = labels[i].getElementsByTagName("input");
 
-            var value = input[0].getAttribute("value");
+            var value = inputs[i].getAttribute("value");
 
-            var split_value = value.split("_");
-            var matched = split_value[0] == split_value[1];
+            var name_now = inputs[i].getAttribute("name");
 
-
-            var name_now = input[0].getAttribute("name");
             if (name_now == name) {
-                labels[i].className = "btn disabled";
-                labels[i].disabled = true;
-                input[0].disabled = true;
+                inputs[i].onclick = function() {
+                    this.disabled = true;
+                }
 
-                if (matched) {
-                    labels[i].style.color = "blue";
-                    labels[i].style.fontSize = "17pt";
-                    labels[i].style.fontWeight = "bold";
+                inputs[i].style.cursor = "not-allowed";
+                var split_value = value.split("_");
+                if (split_value[0] == split_value[1]) {
+                    inputs[i].style.color = "blue";
+                    inputs[i].style.fontSize = "17pt";
+                    inputs[i].style.fontWeight = "bold";
                 }
             }
         }
@@ -177,6 +170,7 @@
     function show_vietnamese(event) {
         var choices = document.getElementsByClassName("show_vi");
         for(var i = 0; i < choices.length; i++) {
+            // I need this for the switch language button
             if(choices[i].className.indexOf("btn") != -1) {
                 choices[i].className = "btn btn-default btn-lg show_vi";
             } else {
@@ -186,6 +180,7 @@
 
         choices = document.getElementsByClassName("show_en");
         for(var i = 0; i < choices.length; i++) {
+            // I need this for the switch language button
             if(choices[i].className.indexOf("btn") != -1) {
                 choices[i].className = "btn btn-default btn-lg show_en hide_words";
             } else {
