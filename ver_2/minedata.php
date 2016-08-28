@@ -7,8 +7,8 @@
 define("maxvalue", 5);
 function mysql_connection()
 {
-    $password = "Fuckyou123@";
-    $dsn = 'mysql:dbname=usCitizenTest;host=vergil.u.washington.edu;port=1204;
+    $password = "XXX";
+    $dsn = 'mysql:dbname=usCitizenTest;host=vergil.u.washington.edu;port=XXX;
         charset=utf8';
     return new PDO($dsn, "root", $password);
 }
