@@ -1,0 +1,91 @@
+#quiz_content {
+    margin-bottom: 100px;
+}
+
+
+.hide_words {
+    display: none;
+}
+
+#languages {
+    float:left;
+}
+
+#correct, #incorrect {
+    float:left;
+    border: 2px solid;
+}
+
+#bar_all {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 99;
+    opacity: 0.84;
+}
+
+body {
+    font-family: Arial, serif;
+    color: #3399FF;
+}
+
+h1 {
+    font-family: "utm_zebrawoodregular";
+    font-size: 5.4em;
+    font-weight: bold;
+}
+
+.question_class {
+    font-family: "utm_duepuntozeroregular";
+    text-shadow: 1px 1px black;
+    font-size: 25pt;
+}
+
+.progress {
+    width: 50%;
+    border: 3px solid;
+    z-index: 9999;
+}
+
+@font-face {
+    font-family: 'utm_duepuntozeroregular';
+    src: url('Fonts/utm_duepuntozero-webfont.woff2') format('woff2'),
+    url('Fonts/utm_duepuntozero-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'utm_zebrawoodregular';
+    src: url('Fonts/utm_zebrawood-webfont.woff2') format('woff2'),
+    url('Fonts/utm_zebrawood-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+#submit_button {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.container {
+    padding-bottom: 20pt;
+}
+
+.radioo {
+    color: #c8c8c8;
+    font-size: 16pt;
+    line-height: 2em;
+    vertical-align: top;
+}
+
+.radioo:hover {
+    color: #7AA3CC;
+    cursor:pointer;
+}
