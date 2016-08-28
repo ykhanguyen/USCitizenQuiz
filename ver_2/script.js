@@ -12,7 +12,6 @@ window.onload = function() {
     // first question
     fetchData("question", total + 1);
 
-    // Select language english or vietnamese
     // default language is english
     show_english();
 
@@ -38,6 +37,8 @@ function fetchData(modeInfo, question_id) {
     request.send(); //send
 }
 
+// this function is to show the question
+// until it finished loading, it will show up !!!
 function show_question() {
     if (document.getElementById(total + 1) == null) {
         return;
@@ -47,10 +48,13 @@ function show_question() {
         document.getElementById(total +1).className.replace("hide_words ", "") ;
 }
 
-function question_mode() {
-    //alert("Hello");
-    // create the div to keep track of question and choices
 
+// This function is to create the div for the question and
+// call the fetch_data -> to retrieve choices data
+// at the end after finished everything, it will "visible"
+// and have animation auto scroll
+function question_mode() {
+    // create the div to keep track of question and choices
     var cover_div = jQuery("<div/>", {
         "id": total+1,
         "class": "hide_words btn-group btn-group-vertical col-lg-12 col-md-12 col-sm-12 col-xs-12",
@@ -60,6 +64,8 @@ function question_mode() {
 
     var response = JSON.parse(this.responseText);
     question_answer_key = response.answer;
+
+    // this is the question in the <h2> tag
     var h2_question = jQuery("<h2/>", {
         "id": "q_en",
         "class": "question_class"
@@ -71,13 +77,15 @@ function question_mode() {
         "src":  response.audio
     });
 
+    // create button audio
     var button_audio = jQuery("<button/>", {
         "name": "play_" + total,
         "type": "button",
         "class": "btn btn-info play_audio"
     });
     button_audio.html("<span class=\"glyphicon glyphicon-volume-up\"></span>");
-    
+
+    // button audio is inside the <h2> tag
     h2_question.html(total + 1 + ") " + response.question_vi_en);
     audio.appendTo(h2_question);
     button_audio.appendTo(h2_question);
@@ -86,16 +94,18 @@ function question_mode() {
 
     h2_question.appendTo("#" + (total + 1));
 
+    // fetch choices data
     fetchData("choices", total + 1);
 }
 
+// this function is to fetch choices data
+// It's asynchronize so I will mess up the order
+// if call the same time with question
 function choices_mode() {
     var response = this.responseXML;
 
-    var en = response.querySelectorAll("en");
-
+    // for every choice, make a new div
     $(response).find("choice").each(function(index) {
-
         var new_div = jQuery("<div/>", {
             "class": "radioo",
             "type": "radio",
@@ -105,11 +115,18 @@ function choices_mode() {
 
         new_div.html(letter[index]+ ") " + $(this).find("vi_en").text());
 
+        // add back to the cover_div
         new_div.appendTo("#" + (total + 1));
 
     });
+
+    // show it up!!!
     show_question();
+
+    // animation
     $("html, body").animate({ scrollTop: $(document).height() }, 1300);
+
+    // handle - event onclick for each choice
     $(".radioo").click(update_process);
 }
 
@@ -193,6 +210,7 @@ function update_process() {
 
 }
 
+// This function is to disable all the buttons and show the correct answer
 function disable_buttons_all_and_show_correct_answer(name) {
     $(".radioo").each(function(index) {
         if ($(this).attr("name") == name) {
@@ -212,6 +230,7 @@ function disable_buttons_all_and_show_correct_answer(name) {
     });
 }
 
+// This function is to show english and hide vietnamese
 function show_english(event) {
     var choices = document.getElementsByClassName("show_vi");
     for(var i = 0; i < choices.length; i++) {
@@ -232,6 +251,7 @@ function show_english(event) {
     }
 }
 
+// this function is to show vietnamese and hide english
 function show_vietnamese(event) {
     var choices = document.getElementsByClassName("show_vi");
     for(var i = 0; i < choices.length; i++) {

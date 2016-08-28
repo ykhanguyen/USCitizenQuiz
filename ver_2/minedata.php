@@ -7,8 +7,8 @@
 define("maxvalue", 5);
 function mysql_connection()
 {
-    $password = "XXX";
-    $dsn = 'mysql:dbname=usCitizenTest;host=vergil.u.washington.edu;port=XXX;
+    $password = "Fuckyou123@";
+    $dsn = 'mysql:dbname=usCitizenTest;host=vergil.u.washington.edu;port=1204;
         charset=utf8';
     return new PDO($dsn, "root", $password);
 }
@@ -28,7 +28,7 @@ try {
 
 // create JSON data
 // contains
-// question - question_vi - questions: answer
+// question - question_vi - questions: answer - audio
 if ($mode == "question") {
     // connect to multiple_choices
 
@@ -65,7 +65,6 @@ if ($mode == "question") {
 //          <en> .. </en>
 //          <vi> .. </vi>
 //          <answer_id> .. </answer_id>
-//          <audio> .. </audio>
 //      </choice>
 // </choices>
 if ($mode == "choices") {
