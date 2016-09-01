@@ -7,4 +7,12 @@ Team member:
 Link:
 http://students.washington.edu/ykha/uscitizentest/
 
+Skills:
+Php
+Javascript
+JQuery
+SQL
+AJAX
+
+
 
